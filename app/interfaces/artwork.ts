@@ -4,3 +4,4 @@ export type Artwork = {
     dated: string;
     culture: string;
 }
+;
