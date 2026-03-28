@@ -26,7 +26,7 @@ export default function SearchPage() {
 
     const params = useParams();
 
-    const {data, error} = useSWR(`/api/searchArt?search=${params.art}`,
+    const {data, error} = useSWR(`/api/searchArt?search=${params.term}`,
         (url) =>
             fetch(url)
                 .then((res) => res.json())
@@ -39,11 +39,11 @@ export default function SearchPage() {
 
     const records = data?.records || [];
 
-    if (records.length === 0) return <div>No results found for &quot;{params.art}&quot;</div>;
+    if (records.length === 0) return <div>No results found for &quot;{params.term}&quot;</div>;
 
     return (
         <ArtworkContentWrapper>
-            <SearchTitle>Results for: {params.art}</SearchTitle>
+            <SearchTitle>Results for: {params.term}</SearchTitle>
             <ArtworkCardsContainer>
                 {
                     records.map((artwork: Artwork, i: number) =>
